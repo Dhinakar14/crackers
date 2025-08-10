@@ -30,6 +30,9 @@ const Header = () => {
             <LinkContainer to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/product">
+              <Nav.Link>Product</Nav.Link>
+            </LinkContainer>
              <LinkContainer to="/giftbox">
               <Nav.Link>Giftbox</Nav.Link>
             </LinkContainer>
