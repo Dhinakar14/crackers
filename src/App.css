@@ -55,3 +55,10 @@
 }
 .swiper-button-prev:after { display: none; }
 .swiper-button-next::after { display: none; }
+
+.banner-section{
+  background-image: url("/src/assets/banner.png");
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
