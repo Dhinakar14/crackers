@@ -3,10 +3,10 @@ import Header from './header'
 import { Outlet } from 'react-router-dom'
 import Footer from './footer'
 
-const Layout = () => {
+const Layout = ({ cart, addToCart, removeFromCart }) => {
     return (
         <div>
-            <Header />
+            <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
             <main className='main'>
                 <Outlet />
             </main>

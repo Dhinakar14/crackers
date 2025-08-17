@@ -62,3 +62,8 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+nav.py-3.shadow-sm.header.navbar.navbar-expand-lg.navbar-light {
+    background: #de2a12;
+}
+

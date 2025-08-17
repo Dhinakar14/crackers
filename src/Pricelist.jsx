@@ -292,18 +292,8 @@ const bankInfo = [
   { label: "GPay & Paytm", value: "97913 70913" },
   { label: "UPI ID", value: "pathmaguru1999@oksbi" },
 ];
-const Pricelist = () => {
-  const addToCart = (item) => {
-    setCart((prev) => {
-      const existing = prev.find((p) => p.sNo === item.sNo);
-      if (existing) {
-        return prev.map((p) =>
-          p.sNo === item.sNo ? { ...p, qty: p.qty + 1 } : p
-        );
-      }
-      return [...prev, { ...item, qty: 1 }];
-    });
-  };
+const Pricelist = ({ cart, addToCart, removeFromCart }) => {
+
 
 
   return (
@@ -315,36 +305,60 @@ const Pricelist = () => {
         <p className="lead">Retail Supply at <strong>Factory Outlet Price</strong> of Quality Crackers<br />Sivakasi, Tamil Nadu</p>
       </Col>
     </Row>
-    {crackerData.map((section, idx) => (
-      <Card className="mb-4" key={idx}>
-        <Card.Header className="bg-warning fw-bold">{section.category}</Card.Header>
-        <Card.Body className="p-0">
-          <Table bordered hover responsive size="sm" className="m-0">
-            <thead>
-              <tr className="text-center" style={{ background: "#ffe4b5" }}>
-                <th style={{ width: "20%" }}>S.No.</th>
-                <th style={{ width: "30%" }}>Product Name</th>
-                <th style={{ width: "10%" }}>Units</th>
-                <th style={{ width: "20%" }}>Price (₹)</th>
-                 <th style={{ width: "20%" }}>Add</th>
-              </tr>
-            </thead>
-            <tbody className="text-center py-2 px-2" >
-              {section.items.map(item => (
-                <tr key={item.sNo}>
-                  <td>{item.sNo}</td>
-                  <td>{item.name}</td>
-                  <td>{item.unit}</td>
-                  <td>{item.price}</td>
-                   <td><button className="cta-button">Add to Cart</button> 
-        </td>   
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Card.Body>
-      </Card>
-    ))}
+{crackerData.map((section, idx) => (
+  <Card className="mb-4" key={idx}>
+    <Card.Header className="bg-warning fw-bold">{section.category}</Card.Header>
+    <Card.Body className="p-0">
+      <Table bordered hover responsive size="sm" className="m-0">
+        <thead>
+          <tr className="text-center" style={{ background: "#ffe4b5" }}>
+            <th style={{ width: "10%" }}>S.No.</th>
+            <th style={{ width: "40%" }}>Product Name</th>
+            <th style={{ width: "15%" }}>Units</th>
+            <th style={{ width: "15%" }}>Price (₹)</th>
+            <th style={{ width: "20%" }}>Add</th>
+          </tr>
+        </thead>
+        <tbody className="text-center py-2 px-2">
+          {section.items?.map((item) => (
+            <tr key={item.sNo}>
+              <td>{item.sNo}</td>
+              <td>{item.name}</td>
+              <td>{item.unit}</td>
+              <td>{item.price}</td>
+              <td>
+                {cart?.[item.sNo] ? (
+                  <div className="d-flex justify-content-center align-items-center">
+                    <button
+                      className="btn btn-outline-danger btn-sm"
+                      onClick={() => removeFromCart(item.sNo)}
+                    >
+                      −
+                    </button>
+                    <span className="mx-3">{cart[item.sNo]?.quantity || 0}</span>
+                    <button
+                      className="btn btn-outline-success btn-sm"
+                      onClick={() => addToCart(item)}
+                    >
+                      +
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => addToCart(item)}
+                  >
+                    Add to Cart
+                  </button>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Card.Body>
+  </Card>
+))}
 
     <Row className="mb-4">
       <Col>
