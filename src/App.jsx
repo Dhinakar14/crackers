@@ -8,7 +8,7 @@ import Pricelist from './Pricelist';
 import Giftbox from './Pages/Giftbox';
 import Productcard from './Pages/Productcard';
 import { useState } from 'react';
-import CartPage from './Pages/CartPage';
+import CartPage from './Pages/Cartpage';
 
 function App() {
   // Cart is an object mapping product id to product info including quantity

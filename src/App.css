@@ -67,3 +67,6 @@ nav.py-3.shadow-sm.header.navbar.navbar-expand-lg.navbar-light {
     background: #de2a12;
 }
 
+a.text-light.fw-bold.active.nav-link.active {
+    text-decoration: underline;
+}
